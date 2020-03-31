@@ -6,8 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using ProyectFinalProg3.Models;
 
-namespace ProyectFinalProg3.Models
+namespace ProyectFinalProg3.Controllers
 {
     public class PacientesController : Controller
     {
