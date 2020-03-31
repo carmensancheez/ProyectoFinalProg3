@@ -1,0 +1,66 @@
+﻿@model ProyectFinalProg3.Models.Altas
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Altas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ingresos.Fecha_Inicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ingresos.Fecha_Inicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Monto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_Salida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_Salida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre_Paciente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_Paciente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IumHabitacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IumHabitacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_Inicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_Inicio)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
