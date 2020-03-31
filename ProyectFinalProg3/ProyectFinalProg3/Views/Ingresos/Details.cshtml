@@ -1,0 +1,42 @@
+﻿@model ProyectFinalProg3.Models.Ingresos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ingresos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Habitaciones.Tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Habitaciones.Tipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pacientes.Cedula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pacientes.Cedula)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_Inicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_Inicio)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
