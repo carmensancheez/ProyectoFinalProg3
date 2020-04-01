@@ -1,33 +1,33 @@
 ﻿@model IEnumerable<ProyectFinalProg3.Models.Altas>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Altas";
 }
 
-<h2>Index</h2>
+<h2>Altas</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Nueva", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Ingresos.Fecha_Inicio)
+            @Html.DisplayName("Fecha de Inicio")
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Monto)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Fecha_Salida)
+            @Html.DisplayName("Fecha de Salida")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Nombre_Paciente)
+            @Html.DisplayName("Nombre del Paciente")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IumHabitacion)
+            @Html.DisplayName("Numero de Habitación")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Fecha_Inicio)
+            @Html.DisplayName("Fecha de Inicio")
         </th>
         <th></th>
     </tr>
@@ -53,9 +53,9 @@
             @Html.DisplayFor(modelItem => item.Fecha_Inicio)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.Id })
         </td>
     </tr>
 }

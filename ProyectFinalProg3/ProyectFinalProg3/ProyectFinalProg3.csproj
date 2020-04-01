@@ -198,11 +198,6 @@
     <Content Include="Views\Ingresos\Details.cshtml" />
     <Content Include="Views\Ingresos\Edit.cshtml" />
     <Content Include="Views\Ingresos\Index.cshtml" />
-    <Content Include="Views\Habitaciones\Create.cshtml" />
-    <Content Include="Views\Habitaciones\Delete.cshtml" />
-    <Content Include="Views\Habitaciones\Details.cshtml" />
-    <Content Include="Views\Habitaciones\Edit.cshtml" />
-    <Content Include="Views\Habitaciones\Index.cshtml" />
     <Content Include="Views\CitasMedicas\Create.cshtml" />
     <Content Include="Views\CitasMedicas\Delete.cshtml" />
     <Content Include="Views\CitasMedicas\Details.cshtml" />
@@ -213,6 +208,11 @@
     <Content Include="Views\Altas\Details.cshtml" />
     <Content Include="Views\Altas\Edit.cshtml" />
     <Content Include="Views\Altas\Index.cshtml" />
+    <Content Include="Views\Habitaciones\Create.cshtml" />
+    <Content Include="Views\Habitaciones\Delete.cshtml" />
+    <Content Include="Views\Habitaciones\Details.cshtml" />
+    <Content Include="Views\Habitaciones\Edit.cshtml" />
+    <Content Include="Views\Habitaciones\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

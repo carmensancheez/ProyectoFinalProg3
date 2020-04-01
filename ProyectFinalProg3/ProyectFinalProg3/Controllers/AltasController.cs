@@ -39,7 +39,7 @@ namespace ProyectFinalProg3.Controllers
         // GET: Altas/Create
         public ActionResult Create()
         {
-            ViewBag.Id_Ingreso = new SelectList(db.Ingresos, "Id", "Fecha_Inicio");
+            ViewBag.Id_Ingreso = new SelectList(db.Ingresos, "Id", "Id");
             return View();
         }
 

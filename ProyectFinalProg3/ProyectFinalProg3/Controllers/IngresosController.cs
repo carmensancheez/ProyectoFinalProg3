@@ -39,8 +39,8 @@ namespace ProyectFinalProg3.Controllers
         // GET: Ingresos/Create
         public ActionResult Create()
         {
-            ViewBag.Id_Habitacion = new SelectList(db.Habitaciones, "Id", "Tipo");
-            ViewBag.Id_Paciente = new SelectList(db.Pacientes, "Id", "Cedula");
+            ViewBag.Id_Habitacion = new SelectList(db.Habitaciones, "Id", "Id");
+            ViewBag.Id_Paciente = new SelectList(db.Pacientes, "Id", "Id");
             return View();
         }
 
