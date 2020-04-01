@@ -4,7 +4,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Detalles de Alta</h2>
+<h2>Detalles</h2>
 
 <div>
     <hr />
@@ -57,9 +57,17 @@
             @Html.DisplayFor(model => model.Fecha_Inicio)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Monto_Final)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monto_Final)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Ir atrás", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Ir Atrás", "Index")
 </p>

@@ -15,7 +15,7 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Id_Paciente, "Id Paciente", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Id_Paciente, "Id del Paciente", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Id_Paciente", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Id_Paciente, "", new { @class = "text-danger" })
@@ -23,7 +23,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Id_Habitacion, "Id Habitacion", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Id_Habitacion, "Id de Habitacion", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Id_Habitacion", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Id_Habitacion, "", new { @class = "text-danger" })
@@ -47,7 +47,7 @@
 }
 
 <div>
-    @Html.ActionLink("Ir atrás", "Index")
+    @Html.ActionLink("Ir Atrás", "Index")
 </div>
 
 @section Scripts {

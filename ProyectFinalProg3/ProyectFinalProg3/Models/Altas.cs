@@ -22,5 +22,7 @@ namespace ProyectFinalProg3.Models
         public string Nombre_Paciente { get; set; }
         public int IumHabitacion { get; set; }
         public string Fecha_Inicio { get; set; }
+
+        public double Monto_Final { get; set; }
     }
 }

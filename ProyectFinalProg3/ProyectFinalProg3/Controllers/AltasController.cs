@@ -48,7 +48,7 @@ namespace ProyectFinalProg3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Monto,Id_Ingreso,Fecha_Salida,Nombre_Paciente,IumHabitacion,Fecha_Inicio")] Altas altas)
+        public ActionResult Create([Bind(Include = "Id,Monto,Id_Ingreso,Fecha_Salida,Nombre_Paciente,IumHabitacion,Fecha_Inicio,Monto_Final")] Altas altas)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace ProyectFinalProg3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Monto,Id_Ingreso,Fecha_Salida,Nombre_Paciente,IumHabitacion,Fecha_Inicio")] Altas altas)
+        public ActionResult Edit([Bind(Include = "Id,Monto,Id_Ingreso,Fecha_Salida,Nombre_Paciente,IumHabitacion,Fecha_Inicio,Monto_Final")] Altas altas)
         {
             if (ModelState.IsValid)
             {
@@ -127,6 +127,48 @@ namespace ProyectFinalProg3.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public JsonResult Nombre(int clavePaciente)
+        {
+
+            var duplicado = (from i in db.Ingresos
+                             join p in db.Pacientes
+                             on i.Id_Paciente equals p.Id
+                             where i.Id == clavePaciente
+                             select p.Nombre).ToList();
+            return Json(duplicado);
+        }
+
+        public JsonResult Monto(int clavePaciente)
+        {
+
+            var duplicado = (from i in db.Ingresos
+                             join h in db.Habitaciones
+                             on i.Id_Habitacion equals h.Id
+                             where i.Id == clavePaciente
+                             select h.Precio).ToList();
+            return Json(duplicado);
+        }
+
+        public JsonResult FechaIngreso(int clavePaciente)
+        {
+
+            var duplicado = (from i in db.Ingresos
+                             where i.Id == clavePaciente
+                             select i.Fecha_Inicio).ToList();
+            return Json(duplicado);
+        }
+
+        public JsonResult NumeroHabitacion(int clavePaciente)
+        {
+
+            var duplicado = (from i in db.Ingresos
+                             join h in db.Habitaciones
+                             on i.Id_Habitacion equals h.Id
+                             where i.Id == clavePaciente
+                             select h.Numero).ToList();
+
+            return Json(duplicado);
         }
     }
 }

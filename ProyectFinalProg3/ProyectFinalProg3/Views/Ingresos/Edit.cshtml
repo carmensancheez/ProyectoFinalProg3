@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
-    <h2>Editar Ingreso</h2>
+<h2>Editar</h2>
 
 
 @using (Html.BeginForm())
@@ -12,12 +12,13 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
+        <h4>Ingresos</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Id_Paciente, "Id Paciente", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Id_Paciente, "Id del Paciente", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Id_Paciente", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Id_Paciente, "", new { @class = "text-danger" })
@@ -25,7 +26,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Id_Habitacion, "Id Habitacion", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Id_Habitacion, "Id de Habitacion", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Id_Habitacion", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Id_Habitacion, "", new { @class = "text-danger" })
@@ -35,7 +36,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Fecha_Inicio, "Fecha de Inicio", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Fecha_Inicio, new { htmlAttributes = new { @class = "form-control", type="date" } })
+                @Html.EditorFor(model => model.Fecha_Inicio, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Fecha_Inicio, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -49,7 +50,7 @@
 }
 
 <div>
-    @Html.ActionLink("Ir atrás", "Index")
+    @Html.ActionLink("Ir Atrás", "Index")
 </div>
 
 @section Scripts {
