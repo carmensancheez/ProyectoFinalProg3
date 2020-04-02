@@ -4,8 +4,28 @@
     ViewBag.Title = "Index";
 }
 
-    <h2>Pacientes</h2>
+<h2>Pacientes</h2>
 
+<div>
+    @using (Html.BeginForm("Index", "Pacientes", FormMethod.Post))
+    {
+    <h5>Filtros de búsqueda</h5>
+    <br />
+    <div class="row">
+        <select name="opcion" class="form-control col col-lg-2", , required="required">
+            <option value="">Selecciones</option>
+            <option value="Nombre">Nombre</option>
+            <option value="Cedula">Cedula</option>
+            <option value="Asegurado">Asegurado</option>
+        </select>
+        @Html.TextBox("valor", "", new { @class = "form-control col-md-4", placeholder = "Busqueda", required = "required" })
+        <div class="col-2">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </div>
+    </div>
+    }
+</div>
+    
 <p>
     @Html.ActionLink("Crear Nuevo", "Create")
 </p>
@@ -23,23 +43,24 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cedula)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Asegurado)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cedula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Asegurado)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>

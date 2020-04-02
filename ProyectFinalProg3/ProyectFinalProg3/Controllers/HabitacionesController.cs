@@ -19,7 +19,42 @@ namespace ProyectFinalProg3.Controllers
         {
             return View(db.Habitaciones.ToList());
         }
+        [HttpPost]
+        public ActionResult Index(string opcion)
+        {
+            if (opcion == "Doble")
+            {
+                var data = (from d in db.Habitaciones
+                           where d.Tipo == Habitaciones.TipoHab.Doble
+                           select d);
 
+                return View(data);
+
+            }
+            else if (opcion == "Privada")
+            {
+
+                var data = (from d in db.Habitaciones
+                            where d.Tipo == Habitaciones.TipoHab.Privada
+                            select d);
+
+                return View(data);
+
+            }
+            else if (opcion == "Suite")
+            {
+
+                var data = (from d in db.Habitaciones
+                            where d.Tipo == Habitaciones.TipoHab.Suite
+                            select d);
+
+                return View(data);
+
+            }
+
+            return View();
+
+        }
         // GET: Habitaciones/Details/5
         public ActionResult Details(int? id)
         {

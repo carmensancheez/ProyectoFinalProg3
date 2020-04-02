@@ -11,23 +11,23 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Habitaciones.Id)
+            @Html.DisplayName("Id de Paciente")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Habitaciones.Id)
+            @Html.DisplayFor(model => model.Id_Paciente)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Pacientes.Cedula)
+            @Html.DisplayName("Id de Habitacion")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Pacientes.Cedula)
+            @Html.DisplayFor(model => model.Id_Habitacion)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Fecha_Inicio)
+            @Html.DisplayName("Fecha Inicio")
         </dt>
 
         <dd>
@@ -41,7 +41,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Ir Atrás, "Index")
+            @Html.ActionLink("Ir Atrás", "Index")
         </div>
     }
 </div>

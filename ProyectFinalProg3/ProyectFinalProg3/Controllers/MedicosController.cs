@@ -20,6 +20,33 @@ namespace ProyectFinalProg3.Controllers
             return View(db.Medicos.ToList());
         }
 
+        [HttpPost]
+        public ActionResult Index(string opcion, string valor)
+        {
+            if (opcion == "Nombre")
+            {
+                var data = from a in db.Medicos
+                           select a;
+
+                data = data.Where(a => a.Nombre.Contains(valor));
+
+                return View(data);
+
+            }
+            else if (opcion == "Especialidad")
+            {
+
+                var data = from a in db.Medicos
+                           select a;
+
+                data = data.Where(a => a.Especialidad.Contains(valor));
+                return View(data);
+
+            }
+            return View();
+
+        }
+
         // GET: Medicos/Details/5
         public ActionResult Details(int? id)
         {

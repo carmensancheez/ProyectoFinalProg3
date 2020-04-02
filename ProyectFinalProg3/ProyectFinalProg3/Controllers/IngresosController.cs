@@ -76,7 +76,7 @@ namespace ProyectFinalProg3.Controllers
                 return HttpNotFound();
             }
             ViewBag.Id_Habitacion = new SelectList(db.Habitaciones, "Id", "Id", ingresos.Id_Habitacion);
-            ViewBag.Id_Paciente = new SelectList(db.Pacientes, "Id", "Cedula", ingresos.Id_Paciente);
+            ViewBag.Id_Paciente = new SelectList(db.Pacientes, "Id", "Id", ingresos.Id_Paciente);
             return View(ingresos);
         }
 
@@ -94,7 +94,7 @@ namespace ProyectFinalProg3.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.Id_Habitacion = new SelectList(db.Habitaciones, "Id", "Id", ingresos.Id_Habitacion);
-            ViewBag.Id_Paciente = new SelectList(db.Pacientes, "Id", "Cedula", ingresos.Id_Paciente);
+            ViewBag.Id_Paciente = new SelectList(db.Pacientes, "Id", "Id", ingresos.Id_Paciente);
             return View(ingresos);
         }
 

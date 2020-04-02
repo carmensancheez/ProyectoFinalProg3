@@ -19,6 +19,52 @@ namespace ProyectFinalProg3.Controllers
         {
             return View(db.Pacientes.ToList());
         }
+        [HttpPost]
+        public ActionResult Index(string opcion, string valor )
+        {
+            if (opcion == "Nombre")
+            {
+                var data = from a in db.Pacientes
+                          select a;
+
+                data = data.Where(a => a.Nombre.Contains(valor));
+
+                return View(data);          
+
+            }
+            else if(opcion == "Asegurado")
+            {
+                if(valor == "si" || valor == "Si" || valor == "sI" || valor == "SI")
+                {
+                    var data = from a in db.Pacientes
+                               where a.Asegurado.Equals(true)
+                               select a;
+
+                    return View(data);
+
+                }
+                else if(valor == "no" || valor == "No" || valor == "nO" || valor == "NO")
+                {
+                    var data = from a in db.Pacientes
+                               where a.Asegurado.Equals(false)
+                               select a;
+
+                    return View(data);
+                }
+            }
+            else if(opcion == "Cedula")
+            {
+                
+                    var data = from a in db.Pacientes
+                               select a;
+
+                    data = data.Where(a => a.Cedula.Contains(valor));
+                    return View(data);
+
+            }
+            return View();
+ 
+        }
 
         // GET: Pacientes/Details/5
         public ActionResult Details(int? id)
