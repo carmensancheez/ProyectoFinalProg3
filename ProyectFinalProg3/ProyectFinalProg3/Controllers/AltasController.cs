@@ -44,10 +44,10 @@ namespace ProyectFinalProg3.Controllers
                 var altas = db.Altas.Include(c => c.Ingresos).Where(a => a.Nombre_Paciente == valor);
 
                 ViewBag.total = altas.Sum(c => c.Monto_Final);
-                ViewBag.cont = altas.Count();
-                ViewBag.min = altas.Min(c => c.Monto_Final);
-                ViewBag.max = altas.Max(c => c.Monto_Final);
-                ViewBag.prom = altas.Average(c => c.Monto_Final);
+                ViewBag.conteo = altas.Count();
+                ViewBag.minimo = altas.Min(c => c.Monto_Final);
+                ViewBag.maximo = altas.Max(c => c.Monto_Final);
+                ViewBag.promedio = altas.Average(c => c.Monto_Final);
 
                 return View(altas.ToList());
 
