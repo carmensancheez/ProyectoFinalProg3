@@ -8,59 +8,59 @@
 <div>
     @using (Html.BeginForm("Index", "Habitaciones", FormMethod.Post))
     {
-        <h5>Filtros de búsqueda</h5>
-        <br />
-        <div class="row">
-            <select name="valor" class="form-control col col-lg-2" , required="required">
-                <option value="Tipo">Tipo</option>
-            </select>
-            <select name="opcion" class="form-control col col-lg-2" , required="required">
-                <option value="">---Selecciona---</option>
-                <option value="Doble">Doble</option>
-                <option value="Privada">Privada</option>
-                <option value="Suite">Suite</option>
-            </select>
-            <div class="col-2">
-                <button type="submit" class="btn btn-primary">Buscar</button>
-            </div>
+        <h5>Filtro de búsqueda</h5>
+        <select name="tipo" class="form-control col col-lg-2">
+            <option value="">Tipo</option>
+        </select>
+        <select name="opcion" class="form-control col col-lg-2">
+            <option value="">---Selecciona---</option>
+            <option value="Doble">Doble</option>
+            <option value="Privada">Privada</option>
+            <option value="Suite">Suite</option>
+        </select>
+
+        <div class="col-2">
+            <button type="submit" class="btn btn-success">Buscar</button>
         </div>
     }
 </div>
+<br />
 <p>
-    @Html.ActionLink("Crear Nueva", "Create")
+    @Html.ActionLink("Create New", "Create")
+    <br />
+    @Html.ActionLink("Imprimir en PDF", "Print")
 </p>
-<table class="table">
+<table class="table table-striped">
     <tr>
-        <th>
+        <th scope="col">
             @Html.DisplayNameFor(model => model.Numero)
         </th>
-        <th>
+        <th scope="col">
             @Html.DisplayNameFor(model => model.Tipo)
         </th>
-        <th>
+        <th scope="col">
             @Html.DisplayNameFor(model => model.Precio)
         </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Numero)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tipo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Precio)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Numero)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Precio)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
 
 </table>

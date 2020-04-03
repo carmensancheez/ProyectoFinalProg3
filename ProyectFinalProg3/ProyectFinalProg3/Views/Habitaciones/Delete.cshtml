@@ -4,10 +4,11 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Eliminar Habitación</h2>
+<h2>Eliminar</h2>
 
-<h3>Estas seguro que desea eliminarla?</h3>
+<h3>Estas seguro que deseas eliminarla?</h3>
 <div>
+    <h4>Habitaciones</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -41,7 +42,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Ir atrás", "Index")
+            @Html.ActionLink("Back to List", "Index")
         </div>
     }
 </div>

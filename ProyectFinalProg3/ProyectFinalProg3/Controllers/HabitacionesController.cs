@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProyectFinalProg3.Models;
+using Rotativa;
 
 namespace ProyectFinalProg3.Controllers
 {
@@ -25,8 +26,8 @@ namespace ProyectFinalProg3.Controllers
             if (opcion == "Doble")
             {
                 var data = (from d in db.Habitaciones
-                           where d.Tipo == Habitaciones.TipoHab.Doble
-                           select d);
+                            where d.Tipo == Habitaciones.TipoHab.Doble
+                            select d);
 
                 return View(data);
 
@@ -53,8 +54,14 @@ namespace ProyectFinalProg3.Controllers
             }
 
             return View();
-
         }
+
+        public ActionResult Print()
+        {
+            var print = new ActionAsPdf("Index");
+            return print;
+        }
+
         // GET: Habitaciones/Details/5
         public ActionResult Details(int? id)
         {

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProyectFinalProg3.Models;
+using Rotativa;
 
 namespace ProyectFinalProg3.Controllers
 {
@@ -20,7 +21,45 @@ namespace ProyectFinalProg3.Controllers
             var citasMedicas = db.CitasMedicas.Include(c => c.Medicos).Include(c => c.Pacientes);
             return View(citasMedicas.ToList());
         }
+        [HttpPost]
+        public ActionResult Index(string opcion,string valor)
+        {
+            if (opcion == "Fecha")
+            {
+                var citasMedicas = db.CitasMedicas.Include(c => c.Medicos).Include(c => c.Pacientes).Where(a => a.Fecha.Contains(valor));
+                return View(citasMedicas.ToList());
 
+            }
+            else if (opcion == "Doctor")
+            {
+
+                var data = (from a in db.Medicos
+                           where a.Nombre == valor
+                           select a.Id).SingleOrDefault();
+
+                var citasMedicas = db.CitasMedicas.Include(c => c.Medicos).Include(c => c.Pacientes).Where(a => a.Id_Medico.Equals(data));
+                return View(citasMedicas.ToList());
+            }
+            else if (opcion == "Paciente")
+            {
+                var data = (from a in db.Pacientes
+                            where a.Nombre == valor
+                            select a.Id).SingleOrDefault();
+
+                var citasMedicas = db.CitasMedicas.Include(c => c.Medicos).Include(c => c.Pacientes).Where(a => a.Id_Paciente.Equals(data));
+                return View(citasMedicas.ToList());
+
+            }
+
+            return View();
+
+        }
+
+        public ActionResult Print()
+        {
+            var print = new ActionAsPdf("Index");
+            return print;
+        }
         // GET: CitasMedicas/Details/5
         public ActionResult Details(int? id)
         {
@@ -59,7 +98,7 @@ namespace ProyectFinalProg3.Controllers
             }
 
             ViewBag.Id_Medico = new SelectList(db.Medicos, "Id", "Nombre", citasMedicas.Id_Medico);
-            ViewBag.Id_Paciente = new SelectList(db.Pacientes, "Id", "Cedula", citasMedicas.Id_Paciente);
+            ViewBag.Id_Paciente = new SelectList(db.Pacientes, "Id", "Nombre", citasMedicas.Id_Paciente);
             return View(citasMedicas);
         }
 
@@ -76,7 +115,7 @@ namespace ProyectFinalProg3.Controllers
                 return HttpNotFound();
             }
             ViewBag.Id_Medico = new SelectList(db.Medicos, "Id", "Nombre", citasMedicas.Id_Medico);
-            ViewBag.Id_Paciente = new SelectList(db.Pacientes, "Id", "Cedula", citasMedicas.Id_Paciente);
+            ViewBag.Id_Paciente = new SelectList(db.Pacientes, "Id", "Nombre", citasMedicas.Id_Paciente);
             return View(citasMedicas);
         }
 
@@ -94,7 +133,7 @@ namespace ProyectFinalProg3.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.Id_Medico = new SelectList(db.Medicos, "Id", "Nombre", citasMedicas.Id_Medico);
-            ViewBag.Id_Paciente = new SelectList(db.Pacientes, "Id", "Cedula", citasMedicas.Id_Paciente);
+            ViewBag.Id_Paciente = new SelectList(db.Pacientes, "Id", "Nombre", citasMedicas.Id_Paciente);
             return View(citasMedicas);
         }
 

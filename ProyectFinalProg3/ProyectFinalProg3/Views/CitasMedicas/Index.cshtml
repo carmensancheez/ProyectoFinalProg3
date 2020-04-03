@@ -5,47 +5,68 @@
 }
 
 <h2>Citas Médicas</h2>
-
+<div>
+    @using (Html.BeginForm("Index", "CitasMedicas", FormMethod.Post))
+    {
+        <div class="row">
+            <h5>Filtros de búsqueda</h5>
+            <select name="opcion" class="form-control col col-lg-2" , required="required">
+                <option value="">---Selecciona---</option>
+                <option value="Fecha">Fecha</option>
+                <option value="Doctor">Doctor</option>
+                <option value="Paciente">Paciente</option>
+            </select>
+            @Html.TextBox("valor", "", new { @class = "form-control col-md-4", placeholder = "Busqueda", required = "required" })
+            <div class="col-2">
+                <button type="submit" class="btn btn-success">Buscar</button>
+            </div>
+        </div>
+    }
+</div>
+<br /> 
 <p>
     @Html.ActionLink("Crear Nueva", "Create")
+    <br />
+    @Html.ActionLink("Imprimir en PDF", "Print")
 </p>
-<table class="table">
+<table class="table table-striped">
     <tr>
-        <th>
+        <th scope="col">
             @Html.DisplayName("Nombre del Médico")
         </th>
-        <th>
-            @Html.DisplayName("Cédula del Paciente")
+        <th scope="col">
+            @Html.DisplayName("Nombre del Paciente")
         </th>
-        <th>
+        <th scope="col">
             @Html.DisplayNameFor(model => model.Fecha)
         </th>
-        <th>
+        <th scope="col">
             @Html.DisplayNameFor(model => model.Hora)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Medicos.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pacientes.Cedula)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fecha)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Hora)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medicos.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pacientes.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hora)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>

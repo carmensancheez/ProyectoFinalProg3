@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProyectFinalProg3.Models;
+using Rotativa;
 
 namespace ProyectFinalProg3.Controllers
 {
@@ -46,6 +47,13 @@ namespace ProyectFinalProg3.Controllers
             return View();
 
         }
+
+        public ActionResult Print()
+        {
+            var print = new ActionAsPdf("Index");
+            return print;
+        }
+
 
         // GET: Medicos/Details/5
         public ActionResult Details(int? id)

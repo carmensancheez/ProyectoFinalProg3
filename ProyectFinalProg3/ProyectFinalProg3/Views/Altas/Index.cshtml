@@ -5,65 +5,117 @@
 }
 
 <h2>Altas</h2>
+<div>
+    @using (Html.BeginForm("Index", "Altas", FormMethod.Post))
+    {
+        
+        <div class="row">
+            <h5>Filtros de búsqueda</h5>
+            <select name="opcion" class="form-control col col-lg-2" required="required">
+                <option value="">---Selecciona---</option>
+                <option value="Paciente">Paciente</option>
+                <option value="Fecha">Fecha</option>
+            </select>
 
+            @Html.TextBox("valor", "", new { @class = "form-control col-md-4", placeholder = "Busqueda", required = "required" })
+
+            <div class="col-2">
+                <button type="submit" class="btn btn-success">Buscar</button>
+
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Operaciones</button>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <center>
+                                    <h2 class="modal-title" id="exampleModalLabel"><b>Operaciones</b></h2>
+                                </center>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h4><b>Sumatoria del total a pagar:</b></h4>@ViewBag.total
+                                <h4><b>Total de busqueda:</b></h4>@ViewBag.conteo
+                                <h4><b>Total a pagar mínimo:</b></h4>@ViewBag.minimo
+                                <h4><b>Total a pagar máximo:</b></h4>@ViewBag.maximo
+                                <h4><b>Promedio del total a pagar:</b></h4>@ViewBag.promedio
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success" data-dismiss="modal">CERRAR</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <br />
+
+</div>
 <p>
     @Html.ActionLink("Crear Nueva", "Create")
+    <br />
+    @Html.ActionLink("Imprimir en PDF", "Print")
 </p>
-<table class="table">
+<table class="table table-striped">
     <tr>
-        <th>
+        <th scope="col">
             @Html.DisplayName("Fecha de Inicio")
         </th>
-        <th>
+        <th scope="col">
             @Html.DisplayName("Monto de Habitación")
         </th>
-        <th>
+        <th scope="col">
             @Html.DisplayName("Fecha de Salida")
         </th>
-        <th>
+        <th scope="col">
             @Html.DisplayName("Nombre del Paciente")
         </th>
-        <th>
+        <th scope="col">
             @Html.DisplayName("Numero de Habitación")
         </th>
-        <th>
+        <th scope="col">
             @Html.DisplayName("Fecha de Inicio")
         </th>
-        <th>
+        <th scope="col">
             @Html.DisplayName("Monto Final")
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ingresos.Fecha_Inicio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Monto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fecha_Salida)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre_Paciente)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IumHabitacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fecha_Inicio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Monto_Final)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ingresos.Fecha_Inicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Monto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha_Salida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre_Paciente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IumHabitacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha_Inicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Monto_Final)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+            </td>
+
+        </tr>
+    }
 
 </table>

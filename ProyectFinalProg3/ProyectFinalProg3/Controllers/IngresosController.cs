@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProyectFinalProg3.Models;
+using Rotativa;
 
 namespace ProyectFinalProg3.Controllers
 {
@@ -19,6 +20,34 @@ namespace ProyectFinalProg3.Controllers
         {
             var ingresos = db.Ingresos.Include(i => i.Habitaciones).Include(i => i.Pacientes);
             return View(ingresos.ToList());
+        }
+        [HttpPost]
+        public ActionResult Index(string opcion, string valor)
+        {
+            if (opcion == "Fecha")
+            {
+                var ingresos = db.Ingresos.Include(c => c.Habitaciones).Include(c => c.Pacientes).Where(a => a.Fecha_Inicio.Contains(valor));
+                return View(ingresos.ToList());
+
+            }
+            else if (opcion == "Habitacion")
+            {
+                int data = (from a in db.Habitaciones
+                            where a.Numero == valor
+                            select a.Id).SingleOrDefault();
+
+                var ingresos = db.Ingresos.Include(i => i.Habitaciones).Include(i => i.Pacientes).Where(e => e.Id_Habitacion.Equals(data));
+                return View(ingresos.ToList());
+            }
+
+            return View();
+
+        }
+
+        public ActionResult Print()
+        {
+            var print = new ActionAsPdf("Index");
+            return print;
         }
 
         // GET: Ingresos/Details/5
