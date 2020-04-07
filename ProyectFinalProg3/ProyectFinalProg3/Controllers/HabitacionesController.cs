@@ -56,11 +56,6 @@ namespace ProyectFinalProg3.Controllers
             return View();
         }
 
-        public ActionResult Print()
-        {
-            var print = new ActionAsPdf("Index");
-            return print;
-        }
 
         // GET: Habitaciones/Details/5
         public ActionResult Details(int? id)

@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-    <h2>Médicos</h2>
-    <div>
-        @using (Html.BeginForm("Index", "Medicos", FormMethod.Post))
-        {
+<h2>Médicos</h2>
+<div>
+    @using (Html.BeginForm("Index", "Medicos", FormMethod.Post))
+    {
         <div class="row">
             <h5>Filtros de búsqueda</h5>
             <select name="opcion" class="form-control col col-lg-2" , required="required">
@@ -20,15 +20,15 @@
                 <button type="submit" class="btn btn-success">Buscar</button>
             </div>
         </div>
-        }
-    </div>
-        <br />
-    <p>
-        @Html.ActionLink("Crear Nuevo", "Create")
-        <br />
-        @Html.ActionLink("Imprimir en PDF", "Print")
-    </p>
-<table class="table table-striped">
+    }
+</div>
+<br />
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+    <br />
+    <button onclick="pdf()" class="btn btn-danger">Crear pdf</button>
+</p>
+<table class="table table-striped" id="table">
     <tr>
         <th scope="col">
             @Html.DisplayNameFor(model => model.Nombre)
@@ -42,23 +42,24 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Exequatur)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Especialidad)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Exequatur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Especialidad)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>

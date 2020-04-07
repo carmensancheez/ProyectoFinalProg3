@@ -67,13 +67,6 @@ namespace ProyectFinalProg3.Controllers
  
         }
 
-        public ActionResult Print()
-        {
-            var print = new ActionAsPdf("Index");
-            return print;
-        }
-
-
         // GET: Pacientes/Details/5
         public ActionResult Details(int? id)
         {

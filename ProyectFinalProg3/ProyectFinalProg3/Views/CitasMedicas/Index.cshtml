@@ -23,13 +23,13 @@
         </div>
     }
 </div>
-<br /> 
+<br />
 <p>
     @Html.ActionLink("Crear Nueva", "Create")
     <br />
-    @Html.ActionLink("Imprimir en PDF", "Print")
+    <button onclick="pdf()" class="btn btn-danger">Crear pdf</button>
 </p>
-<table class="table table-striped">
+<table class="table table-striped" id="table">
     <tr>
         <th scope="col">
             @Html.DisplayName("Nombre del Médico")
